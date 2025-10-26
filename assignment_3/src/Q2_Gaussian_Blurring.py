@@ -36,6 +36,7 @@ def pad_kernel_for_dft(kernel, image_shape):
     return kernel_for_dft
 
 def part_a(img_gray, output_dir_name):
+    print("Running Part (a)...")
     img_shape = img_gray.shape
 
     # PART A
@@ -64,9 +65,13 @@ def part_a(img_gray, output_dir_name):
     plt.savefig(f"{output_dir_name}/a_blurring_result.png")
     plt.show()
 
+    print("Part (a) complete.")
+
     return kernel_g, kernel_padded, blur_img_real
 
 def part_b(kernel_spatial_13, kernel_spatial_1036, output_dir_name):
+    print("Running Part (b)...")
+
     epsilon = 1e-3
     # 13x13 DFT
     kernel_magnitude_13 = np.abs(np.fft.fftshift(np.fft.fft2(kernel_spatial_13)))
@@ -109,6 +114,8 @@ def part_b(kernel_spatial_13, kernel_spatial_1036, output_dir_name):
     plt.tight_layout()
     plt.savefig(f"{output_dir_name}/b_kernel_spectrums.png")
     plt.show()
+
+    print("Part (b) complete.")
 
     return kernel_magnitude_1036, kernel_magnitude_1036_inv
 
@@ -230,7 +237,7 @@ def main():
 
     # Part D:
     part_d(img_gray, blurred_img_real, kernel_mag_inv, H_cont_inv, output_dir_name) 
-    
+
     return
 
 if __name__ == '__main__':
